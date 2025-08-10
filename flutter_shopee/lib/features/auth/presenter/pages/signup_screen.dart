@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopee/features/home/presenter/pages/home_screen.dart';
-import 'package:flutter_shopee/features/profile/presenter/pages/profile_screen.dart';
+import 'package:flutter_shopee/main_navigation_screen.dart';
 import 'package:flutter_shopee/theme/dimensions.dart';
 import 'package:flutter_shopee/widgets/phone_number_field.dart';
 
@@ -221,9 +220,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
   void _onSignup() {
     if (_formKey.currentState!.validate()) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ProfileScreen()),
+        MaterialPageRoute(builder: (context) => const MainNavigationScreen()),
       );
     }
   }
