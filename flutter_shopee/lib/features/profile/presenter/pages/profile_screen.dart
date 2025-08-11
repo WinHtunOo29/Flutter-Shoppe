@@ -77,9 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildMyActivityButton(BuildContext context) {
-    return SizedBox(
-      width: 115,
-      height: 35,
+    return Expanded(
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
@@ -324,18 +322,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildMyOrdersButtons(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Expanded(
-          child: _buildToPayButton(context),
-        ),
-        SizedBox(width: kPaddingMedium),
-        Expanded(
-          child: _buildToReceiveButton(context),
-        ),
-        SizedBox(width: kPaddingMedium),
-        Expanded(
-          child: _buildToReviewButton(context),
-        ) 
+        _buildToPayButton(context),
+        SizedBox(width: kPaddingSmall),
+        Expanded(child: _buildToReceiveButton(context)),
+        SizedBox(width: kPaddingSmall),
+        Expanded(child: _buildToReviewButton(context)) 
       ],
     );
   }
@@ -365,35 +358,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Stack(
       children: [
         Ink(
-        decoration: ShapeDecoration(
-          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2), 
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(kWidgetBorderRadius),
-          )
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kPaddingMedium, vertical: kPaddingSmall),
-          child: Text(
-            'To Receive',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context).colorScheme.primary,
+          width: double.infinity,
+          decoration: ShapeDecoration(
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2), 
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(kWidgetBorderRadius),
+            )
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kPaddingMedium, vertical: kPaddingSmall),
+            child: Text(
+              'To Receive',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ),
         ),
-      ),
-      Positioned(
-        right: 10,
-        child: Container(
-          width: 10,
-          height: 10,
-          decoration: BoxDecoration(
-            color: Colors.green,
-            shape: BoxShape.circle,
+        Positioned(
+          right: 0,
+          child: Container(
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              color: Colors.green,
+              shape: BoxShape.circle,
+            ),
           ),
         ),
-      ),
-    ],
+      ],
     );
   }
 

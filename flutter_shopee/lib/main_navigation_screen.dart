@@ -53,9 +53,13 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 80,
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(kWidgetBorderRadius),
+          topRight: Radius.circular(kWidgetBorderRadius),
+        ),
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).colorScheme.outline.withAlpha(10),
@@ -80,29 +84,26 @@ class CustomBottomNavigationBar extends StatelessWidget {
     
     return GestureDetector(
       onTap: () => onTap(index),
-      child: Container(
-        padding: EdgeInsets.only(bottom: kPaddingLarge),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              isSelected ? selectedImage : unselectedImage,
-              width: 24,
-              height: 24,
-              color: isSelected ? Theme.of(context).colorScheme.scrim : Theme.of(context).colorScheme.primary,
-            ),
-            if (isSelected)
-              Container(
-                margin: EdgeInsets.only(top: 4),
-                width: 10,
-                height: 2,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.scrim,
-                  shape: BoxShape.rectangle,
-                ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            isSelected ? selectedImage : unselectedImage,
+            width: 24,
+            height: 24,
+            color: isSelected ? Theme.of(context).colorScheme.scrim : Theme.of(context).colorScheme.primary,
+          ),
+          if (isSelected)
+            Container(
+              margin: EdgeInsets.only(top: 4),
+              width: 10,
+              height: 2,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.scrim,
+                shape: BoxShape.rectangle,
               ),
-          ],
-        ),
+            ),
+        ],
       ),
     );
   }
