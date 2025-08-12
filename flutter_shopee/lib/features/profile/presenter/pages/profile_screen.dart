@@ -190,7 +190,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SizedBox(height: kPaddingXLarge),
           _buildStoriesTitle(context),
           SizedBox(height: kPaddingMedium),
-          
+          _buildStories(),
         ],
       ),
     );
@@ -418,6 +418,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
       style: Theme.of(context).textTheme.titleLarge?.copyWith(
         fontWeight: FontWeight.w600,
       ),  
+    );
+  }
+
+  Widget _buildStories() {
+    return SizedBox(
+      height: 175,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 4,
+          itemBuilder: (context, index) {
+            return SizedBox(
+              width: 104,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(kWidgetBorderRadius),
+                child: Image.asset(
+                  'assets/images/story_${index + 1}.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
+      ),
     );
   }
 }
